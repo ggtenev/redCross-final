@@ -11,7 +11,7 @@ export default class Aside extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
       // headerTitle instead of title
-      headerTitle: Dimensions.get('window').width > 600 ? 'Стабилно странично положение' :'Странично положение' ,
+      headerTitle:'Човек в безсъзнание',
       headerTitleStyle:{
         fontSize:18,
         fontWeight:'bold',

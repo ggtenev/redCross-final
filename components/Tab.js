@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     shadowRadius: 2,
   },
   title: {
-    fontSize: Dimensions.get('window').width > 600 ? 18 : 15,
+    fontSize: 17,
     color: '#43474d',
     marginLeft: 3,
     fontWeight: 'bold'

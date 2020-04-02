@@ -71,15 +71,15 @@ export default class Home extends React.Component {
       <Container>
         <Content>
           <Image
-            style={{ width: '100%', height: 200 }}
-            source={require('../resources/images/lenta.jpg')}
+            style={{ width: '100%', height: 230 }}
+            source={require('../assets/finalized.png')}
           />
           <ScrollView>
             <TouchableOpacity onPress={() => this.props.navigation.navigate('Alergy')}>
               <Tab title='Помощ при алергии' icon={alergy} />
             </TouchableOpacity>
             <TouchableOpacity onPress={() => this.props.navigation.navigate('CardioPulmonary')}>
-              <Tab title='Кардио-пулмонална помощ' icon={heartAttack} />
+              <Tab title='Клинична смърт' icon={heartAttack} />
             </TouchableOpacity>
             <TouchableOpacity onPress={() => this.props.navigation.navigate('Choking')}>
               <Tab title='Помощ при задавяне' icon={choking} />
@@ -118,7 +118,7 @@ export default class Home extends React.Component {
               <Tab title='Спиране на кръвотечение' icon={bleeding} />
             </TouchableOpacity>
             <TouchableOpacity onPress={() => this.props.navigation.navigate('Aside')}>
-              <Tab title='Стабилно странично положение' icon={movebody} />
+              <Tab title='Човек в безсъзнание' icon={movebody} />
             </TouchableOpacity>
 
           </ScrollView>

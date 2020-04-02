@@ -12,7 +12,7 @@ export default class CardShowcaseExample extends Component {
       headerTitle: 'За Българския Червен Кръст',
       headerTitleStyle: {
         fontWeight: 'bold',
-        fontSize:Dimensions.get('window').width > 600 ? 20 : 15
+        fontSize:17
 
       },
     }
