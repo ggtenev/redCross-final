@@ -56,7 +56,7 @@ export default class Aside extends Component {
               <Body>
                 <Text>
                   <Text style={{ color: 'red', fontWeight: 'bold', fontSize: 28 }}>3.</Text>
-                  Успокоявайте пострадалия като проверявате предиодично дали е в съзнание и дали диша.
+                  Успокоявайте пострадалия като проверявате периодично дали е в съзнание и дали диша.
                 </Text>
               </Body>
             </CardItem>

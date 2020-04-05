@@ -13,7 +13,6 @@ export default class CardShowcaseExample extends Component {
       headerTitleStyle: {
         fontWeight: 'bold',
         fontSize:17
-
       },
     }
   };

@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, Image, ScrollView, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Image, ScrollView, TouchableOpacity, View, Dimensions, Modal } from 'react-native';
+// import Modal from 'react-native-modal';
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text } from 'native-base';
 import { Ionicons } from '@expo/vector-icons';
 import call from 'react-native-phone-call'
@@ -45,7 +46,15 @@ class LogoTitle extends React.Component {
   }
 }
 
+const deviceWidth = Dimensions.get("window").width;
+const deviceHeight = Dimensions.get("window").height;
+
 export default class Home extends React.Component {
+  state = {
+    isModalVisible: false,
+  };
+  
+
   static navigationOptions = ({ navigation }) => {
     // headerTitle instead of title
     return {
@@ -61,6 +70,10 @@ export default class Home extends React.Component {
       )
     }
   };
+  //toggle modal
+  toggleModal = () => {
+    this.setState({isModalVisible: !this.state.isModalVisible});
+  };
 
   render() {
     const args = {
@@ -69,11 +82,39 @@ export default class Home extends React.Component {
     }
     return (
       <Container>
+        
+        <Modal 
+         transparent={true}
+         animationType="fade"
+        onBackdropPress={() => this.setState({isModalVisible: false})}
+        deviceWidth={deviceWidth}
+        deviceHeight={deviceHeight}
+        visible={this.state.isModalVisible}
+        >
+          <View style={{alignItems:'center'}}>
+          <ScrollView style={{width:'100%'}}>
+            <View style={{width:'100%'}}>
+            <Image source={require('../assets/corona1.jpg')} resizeMode='contain' style={styles.corona}/>
+            </View>
+            
+            {/* <Image source={require('../assets/corona3.jpg')} resizeMode='contain' style={styles.corona}/> */}
+            {/* <Button danger block onPress={this.toggleModal}><Text>Затвори</Text></Button> */}
+            <TouchableOpacity onPress={this.toggleModal} style={styles.coronaButton}>
+              <Text style={{color:'white',fontSize:18,fontWeight:'bold'}}>ЗАТВОРИ</Text>
+            </TouchableOpacity>
+          </ScrollView>
+          </View>
+        </Modal>
         <Content>
           <Image
             style={{ width: '100%', height: 230 }}
             source={require('../assets/finalized.png')}
           />
+          <TouchableOpacity onPress={this.toggleModal} style={styles.coronaButton}>
+              <Text style={{color:'white',fontSize:18,fontWeight:'bold'}}>Коронавирус (COVID-19)</Text>
+              <Ionicons name="ios-arrow-forward" size={28} color="white" style={styles.icon} />
+            </TouchableOpacity>
+          {/* <Button danger block onPress={this.toggleModal} color='red'><Text>Коронавирус (COVID - 19)</Text></Button> */}
           <ScrollView>
             <TouchableOpacity onPress={() => this.props.navigation.navigate('Alergy')}>
               <Tab title='Помощ при алергии' icon={alergy} />
@@ -157,6 +198,21 @@ const styles = StyleSheet.create({
   footer: {
     backgroundColor: 'red',
     // flexDirection:'row'
+  },
+  corona:{
+    width:Dimensions.get('window').width,
+  },
+  coronaButton:{
+    flexDirection:'row',
+    justifyContent:'center',
+    backgroundColor:'red',
+    alignItems:'center',
+    padding:10,
+    marginVertical:7
+  },
+  icon:{
+    position:'absolute',
+    right:10
   }
 });
 
