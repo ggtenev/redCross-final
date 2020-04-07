@@ -9,7 +9,7 @@ export default class Aside extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
       // headerTitle instead of title
-      headerTitle: 'Помощ при инфаркт',
+      headerTitle: 'Инфаркт',
       headerRight: () => (
         <TouchableOpacity style={{ padding: 10 }} onPress={() => navigation.navigate('About')}>
           <Ionicons name="ios-heart" size={32} color="white" style={{ marginRight: 10 }} />

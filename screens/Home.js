@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Image, ScrollView, TouchableOpacity, View, Dimensions, Modal } from 'react-native';
+import { StyleSheet, Image, ScrollView, Alert, ImageBackground, TouchableOpacity, View, Dimensions, Modal } from 'react-native';
 // import Modal from 'react-native-modal';
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text } from 'native-base';
 import { Ionicons } from '@expo/vector-icons';
@@ -20,31 +20,7 @@ import spine from '../assets/spine.png'
 import stroke from '../assets/stroke.png'
 import wounds from '../assets/wounds.png'
 
-
 import Tab from '../components/Tab'
-
-class LogoTitle extends React.Component {
-  render() {
-    return (
-      <View style={styles.header}>
-        <Left>
-          <Button transparent>
-            <Image
-              style={{ width: 50, height: 50 }}
-              source={require('../resources/images/Redcross.png')}
-            />
-          </Button>
-        </Left>
-        <Body style={styles.bodyTitle}>
-          <Title>Първа Помощ</Title>
-        </Body>
-        <Right>
-          <Ionicons name="ios-heart" size={32} color="white" />
-        </Right>
-      </View>
-    );
-  }
-}
 
 const deviceWidth = Dimensions.get("window").width;
 const deviceHeight = Dimensions.get("window").height;
@@ -54,6 +30,21 @@ export default class Home extends React.Component {
     isModalVisible: false,
   };
   
+  componentDidMount(){
+    setTimeout(() => {
+     Alert.alert(
+       'ВНИМАНИЕ',
+       'Българския Червен Кръст моли всички да предприемат необходимите мерки за справяне с COVID-19',[{
+       text:'Прочети',
+       onPress:()=>this.props.navigation.navigate('Covid')
+     }, {text:'Затвори',style:'destructive'}])
+    }, 1400);
+  }
+
+  //toggle modal
+  toggleModal = () => {
+    this.setState({isModalVisible: !this.state.isModalVisible});
+  };
 
   static navigationOptions = ({ navigation }) => {
     // headerTitle instead of title
@@ -70,10 +61,7 @@ export default class Home extends React.Component {
       )
     }
   };
-  //toggle modal
-  toggleModal = () => {
-    this.setState({isModalVisible: !this.state.isModalVisible});
-  };
+
 
   render() {
     const args = {
@@ -82,35 +70,13 @@ export default class Home extends React.Component {
     }
     return (
       <Container>
-        
-        <Modal 
-         transparent={true}
-         animationType="fade"
-        onBackdropPress={() => this.setState({isModalVisible: false})}
-        deviceWidth={deviceWidth}
-        deviceHeight={deviceHeight}
-        visible={this.state.isModalVisible}
-        >
-          <View style={{alignItems:'center'}}>
-          <ScrollView style={{width:'100%'}}>
-            <View style={{width:'100%'}}>
-            <Image source={require('../assets/corona1.jpg')} resizeMode='contain' style={styles.corona}/>
-            </View>
-            
-            {/* <Image source={require('../assets/corona3.jpg')} resizeMode='contain' style={styles.corona}/> */}
-            {/* <Button danger block onPress={this.toggleModal}><Text>Затвори</Text></Button> */}
-            <TouchableOpacity onPress={this.toggleModal} style={styles.coronaButton}>
-              <Text style={{color:'white',fontSize:18,fontWeight:'bold'}}>ЗАТВОРИ</Text>
-            </TouchableOpacity>
-          </ScrollView>
-          </View>
-        </Modal>
+    
         <Content>
           <Image
             style={{ width: '100%', height: 230 }}
             source={require('../assets/finalized.png')}
           />
-          <TouchableOpacity onPress={this.toggleModal} style={styles.coronaButton}>
+          <TouchableOpacity onPress={() => this.props.navigation.navigate('Covid')} style={styles.coronaButton}>
               <Text style={{color:'white',fontSize:18,fontWeight:'bold'}}>Коронавирус (COVID-19)</Text>
               <Ionicons name="ios-arrow-forward" size={28} color="white" style={styles.icon} />
             </TouchableOpacity>

@@ -21,6 +21,7 @@ import SpineInjury from '../screens/SpineInjury'
 import Stroke from '../screens/Stroke'
 import Wounds from '../screens/Wounds'
 import About from '../screens/About'
+import Covid from '../screens/Covid'
 
 
 const RootStack = createStackNavigator(
@@ -41,6 +42,7 @@ const RootStack = createStackNavigator(
       SpineInjury:SpineInjury,
       Stroke:Stroke,
       Wounds:Wounds,
+      Covid:Covid,
       About:{screen:About,
       navigationOptions:{
         title:'За Българския Червен Кръст'

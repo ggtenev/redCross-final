@@ -17,7 +17,7 @@
       "backgroundColor": "#ffffff"
     },
     "updates": {
-      "fallbackToCacheTimeout": 1
+      "fallbackToCacheTimeout": 3000
     },
     "assetBundlePatterns": [
       "**/*"
@@ -25,6 +25,6 @@
     "ios": {
       "supportsTablet": true
     },
-    "description": ""
+    "description": "Първа долекарска помощ - Български Червен Кръст"
   }
 }
